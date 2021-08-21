@@ -1,3 +1,4 @@
+use test;
 CREATE TABLE if not exists `USEtxt` (
   `symbol` varchar(10) NOT NULL,
   `tradedate` date NOT NULL `date_format`='YYYYMMDD',

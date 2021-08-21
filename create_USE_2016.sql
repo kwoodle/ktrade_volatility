@@ -1,5 +1,5 @@
 use test;
-CREATE TABLE if not exists `USEQ_HIST` (
+CREATE TABLE if not exists `USE_2016` (
   `symbol` varchar(10) NOT NULL,
   `tradedate` date NOT NULL,
   `open` float(12,2) DEFAULT NULL,
@@ -14,4 +14,4 @@ CREATE TABLE if not exists `USEQ_HIST` (
   `pct_hilo` float DEFAULT NULL,
   `pct_opclo` float DEFAULT NULL,
   PRIMARY KEY (`symbol`,`tradedate`)
-) ENGINE=MRG_MyISAM DEFAULT CHARSET=latin1 INSERT_METHOD=LAST UNION=(`USE_2016`,`USE_2017`,`USE_2018`,`USE_2019`,`USE_2020`,`USE_2021`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1
