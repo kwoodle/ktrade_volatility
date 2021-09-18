@@ -8,7 +8,7 @@ CREATE TABLE if not exists `USEtxt` (
   `low` float(12,2) NOT NULL,
   `close` float(12,2) NOT NULL,
   `volume` bigint(20) NOT NULL
-) ENGINE=CONNECT DEFAULT CHARSET=latin1 `table_type`=CSV `file_name`='/var/mariadb/data/USEQ/post_0722/USE_20210723.txt' `header`=0 `sep_char`=',';
+) ENGINE=CONNECT DEFAULT CHARSET=latin1 `table_type`=CSV `file_name`='/var/mariadb/data/USEQ/post_0903/USE_20210913.txt' `header`=0 `sep_char`=',';
 
 
 insert into USE_2021
