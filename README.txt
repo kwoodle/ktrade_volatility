@@ -69,3 +69,6 @@ MariaDB [test]> select symbol,tradedate,open,high,low,close,volume from USE_2020
 | MS     | 2020-01-27 | 53.00 | 53.69 | 52.86 | 53.11 | 10649100 |
 +--------+------------+-------+-------+-------+-------+----------+
 16 rows in set (0.003 sec)
+
+This fixed in insert_daily.sql. Leave volume=0 rows in table. Queries
+should usually return rows with volume>0.

@@ -1,4 +1,4 @@
--- Must run in order of earliest to latest insertions!
+-- Must run in order of earlier to later insertions!
 -- third do files in /var/mariadb/data/USEQ/post_0903
 use test;
 drop table if exists USEtxt;
@@ -10,7 +10,7 @@ CREATE TABLE if not exists `USEtxt` (
   `low` float(12,2) NOT NULL,
   `close` float(12,2) NOT NULL,
   `volume` bigint(20) NOT NULL
-) ENGINE=CONNECT DEFAULT CHARSET=latin1 `table_type`=CSV `file_name`='/var/mariadb/data/USEQ/post_0903/USE_20210923.txt' `header`=0 `sep_char`=',';
+) ENGINE=CONNECT DEFAULT CHARSET=latin1 `table_type`=CSV `file_name`='/var/mariadb/data/USEQ/post_0923/USE_20211015.txt' `header`=0 `sep_char`=',';
 
 
 insert into USE_2021
