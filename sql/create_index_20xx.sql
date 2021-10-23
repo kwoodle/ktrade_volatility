@@ -1,6 +1,6 @@
 use test;
-drop table if exists USIDX_2021;
-create table if not exists USIDX_2021
+drop table if exists IDX_2021;
+create table if not exists IDX_2021
 (
     `symbol`    varchar(10)  NOT NULL,
     `tradedate` date         NOT NULL,
@@ -31,4 +31,4 @@ as
         pctchg(close,lag(close) over (partition by symbol order by tradedate)) as pct_close,
         pctchg(high,low) as pct_hilo,
         pctchg(open,close) as pct_opclo
-        from USIDX_2021z
+        from IDX_2021z
