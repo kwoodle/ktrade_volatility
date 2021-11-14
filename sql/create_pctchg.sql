@@ -1,4 +1,4 @@
-use test;
+use idx;
 drop function if exists pctchg;
 create
     function pctchg(last float, prev float) returns float deterministic

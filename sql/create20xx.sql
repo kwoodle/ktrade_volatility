@@ -1,6 +1,5 @@
-use test;
-drop table if exists USE_2016;
-create table if not exists USE_2016
+drop table if exists test.USE_2021;
+create table if not exists test.USE_2021
 (
     `symbol`    varchar(10)  NOT NULL,
     `tradedate` date         NOT NULL,
@@ -31,4 +30,4 @@ as
         pctchg(close,lag(close) over (partition by symbol order by tradedate)) as pct_close,
         pctchg(high,low) as pct_hilo,
         pctchg(open,close) as pct_opclo
-        from USE_2016z
+        from zips.USE_2021z

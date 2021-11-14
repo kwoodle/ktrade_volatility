@@ -1,4 +1,9 @@
-use test;
+-- moved zip tables from test to zips for 2016 thru 2020
+-- use this for earlier years
+-- for 2021, use minizip to zip daily txt files and move result to /var/mariadb/data/USEQ/2021
+-- eg kwoodle:post_0722> minizip USE_20210923.zip US*.txt
+
+use zips;
 drop table if exists `USE_2021z`;
 CREATE TABLE if not exists`USE_2021z` (
   `symbol` varchar(10) NOT NULL,

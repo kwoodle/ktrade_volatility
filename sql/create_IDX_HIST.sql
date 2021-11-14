@@ -1,4 +1,4 @@
-use test;
+use idx;
 drop table if exists IDX_HIST;
 CREATE TABLE if not exists `IDX_HIST`
 (
@@ -17,6 +17,6 @@ CREATE TABLE if not exists `IDX_HIST`
     `pct_opclo` float       NOT NULL DEFAULT 0,
     PRIMARY KEY (`symbol`, `tradedate`)
 ) ENGINE = MRG_MyISAM
-  DEFAULT CHARSET = latin1
+  DEFAULT CHARACTER SET = latin1
   INSERT_METHOD = LAST
   UNION = (`IDX_2016`,`IDX_2017`,`IDX_2018`,`IDX_2019`,`IDX_2020`,`IDX_2021`)
