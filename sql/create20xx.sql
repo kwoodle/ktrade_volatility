@@ -1,5 +1,5 @@
-drop table if exists test.USE_2021;
-create table if not exists test.USE_2021
+drop table if exists useq.USE_2021;
+create table if not exists useq.USE_2021
 (
     `symbol`    varchar(10)  NOT NULL,
     `tradedate` date         NOT NULL,
@@ -7,27 +7,28 @@ create table if not exists test.USE_2021
     `high`      float(12, 2) NOT NULL,
     `low`       float(12, 2) NOT NULL,
     `close`     float(12, 2) NOT NULL,
-    `volume`    bigint(20) NOT NULL DEFAULT 0,
-    `pct_open`  float      NOT NULL DEFAULT 0,
-    `pct_high`  float      NOT NULL DEFAULT 0,
-    `pct_low`   float      NOT NULL DEFAULT 0,
-    `pct_close` float      NOT NULL DEFAULT 0,
-    `pct_hilo`  float      NOT NULL DEFAULT 0,
-    `pct_opclo` float      NOT NULL DEFAULT 0,
+    `volume`    bigint(20)   NOT NULL DEFAULT 0,
+    `pct_open`  float        NOT NULL DEFAULT 0,
+    `pct_high`  float        NOT NULL DEFAULT 0,
+    `pct_low`   float        NOT NULL DEFAULT 0,
+    `pct_close` float        NOT NULL DEFAULT 0,
+    `pct_hilo`  float        NOT NULL DEFAULT 0,
+    `pct_opclo` float        NOT NULL DEFAULT 0,
     PRIMARY KEY (`symbol`, `tradedate`)
-) ENGINE=MyISAM
+) ENGINE = MyISAM
+  DEFAULT CHARSET = latin1
 as
-        select symbol,
-        tradedate,
-        open,
-        high,
-        low,
-        close,
-        volume,
-        pctchg(open,lag(open) over (partition by symbol order by tradedate)) as pct_open,
-        pctchg(high,lag(high) over (partition by symbol order by tradedate)) as pct_high,
-        pctchg(low,lag(low) over (partition by symbol order by tradedate)) as pct_low,
-        pctchg(close,lag(close) over (partition by symbol order by tradedate)) as pct_close,
-        pctchg(high,low) as pct_hilo,
-        pctchg(open,close) as pct_opclo
-        from zips.USE_2021z
+select symbol,
+       tradedate,
+       open,
+       high,
+       low,
+       close,
+       volume,
+       useq.pctchg(open, lag(open) over (partition by symbol order by tradedate))   as pct_open,
+       useq.pctchg(high, lag(high) over (partition by symbol order by tradedate))   as pct_high,
+       useq.pctchg(low, lag(low) over (partition by symbol order by tradedate))     as pct_low,
+       useq.pctchg(close, lag(close) over (partition by symbol order by tradedate)) as pct_close,
+       useq.pctchg(high, low)                                                       as pct_hilo,
+       useq.pctchg(open, close)                                                     as pct_opclo
+from zips.USE_2021z
