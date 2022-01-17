@@ -6,9 +6,9 @@ insert into IDX_2022
 select
        u21.symbol,
        '2022-01-01',
-       u21.close,
-       u21.close,
-       u21.close,
+       u21.open,
+       u21.high,
+       u21.low,
        u21.close,
        0,0.,0.,0.,0.,0.,0.
 from IDX_2021 as u21
