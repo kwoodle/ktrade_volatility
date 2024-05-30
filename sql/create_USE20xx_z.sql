@@ -1,11 +1,8 @@
--- moved zip tables from test to zips for 2016 thru 2020
--- use this for earlier years
--- for 2012, use minizip to zip daily txt files and move result to /var/mariadb/data/USEQ/2012
--- eg kwoodle:post_0722> minizip USE_20120923.zip US*.txt
+-- May 2024. New PopOS machine. Mariadb secure_file_priv causes problem. Solution is to create directory on /
 
 use zips;
-drop table if exists `USE_2015z`;
-CREATE TABLE if not exists `USE_2015z`
+-- drop table if exists `AMEX_2004Z`;
+CREATE TABLE if not exists `USEQ_2024Z`
 (
     `symbol`    varchar(10)  NOT NULL,
     `tradedate` date         NOT NULL `date_format`='YYYYMMDD',
@@ -15,4 +12,4 @@ CREATE TABLE if not exists `USE_2015z`
     `close`     float(12, 2) NOT NULL,
     `volume`    bigint(20)   NOT NULL DEFAULT 0
 ) ENGINE = CONNECT
-  DEFAULT CHARSET = latin1 `table_type`=CSV `file_name`='/var/mariadb/data/USEQ/2015/*.zip' `header`=0 `sep_char`=',' `zipped`=1 `multiple`=1 `option_list`='Entry=*.txt'
+  DEFAULT CHARSET = latin1 `table_type`=CSV `file_name`='/KWdata/EODDATA/zips/*_2024.zip' `header`=0 `sep_char`=',' `zipped`=1 `multiple`=1 `option_list`='Entry=*.txt'

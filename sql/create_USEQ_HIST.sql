@@ -1,5 +1,9 @@
+-- Mqy 30 2024
+-- Mariadb default table may have changed, now require individual years
+-- created explicitly MyIsam. Primary Key seems to work, as long as
+-- INSERT_METHOD = LAST comes after UNION(..)
 use useq;
-drop table if exists USEQ_HIST;
+-- drop table if exists USEQ_HIST;
 CREATE TABLE if not exists USEQ_HIST
 (
     `symbol`    varchar(10)  NOT NULL,
@@ -15,9 +19,8 @@ CREATE TABLE if not exists USEQ_HIST
     `pct_close` float        NOT NULL DEFAULT 0,
     `pct_hilo`  float        NOT NULL DEFAULT 0,
     `pct_opclo` float        NOT NULL DEFAULT 0,
-    PRIMARY KEY (`symbol`, `tradedate`)
-) ENGINE = MRG_MyISAM
-  DEFAULT CHARACTER SET = latin1
-  INSERT_METHOD = LAST
-  UNION = (USE_2011, USE_2012, USE_2013, USE_2014, USE_2015,
-      `USE_2016`,`USE_2017`,`USE_2018`,`USE_2019`,`USE_2020`,`USE_2021`)
+    PRIMARY KEY (`symbol`,`tradedate`)
+) ENGINE = MERGE UNION = (USEQ_2001,USEQ_2002,USEQ_2003,USEQ_2004,
+    USEQ_2005,USEQ_2006,USEQ_2007,USEQ_2008,USEQ_2009,USEQ_2010,USEQ_2011,
+    USEQ_2012,USEQ_2013,USEQ_2014,USEQ_2015,USEQ_2016,USEQ_2017,USEQ_2018,
+    USEQ_2019,USEQ_2020,USEQ_2021,USEQ_2022,USEQ_2023,USEQ_2024) INSERT_METHOD = LAST
