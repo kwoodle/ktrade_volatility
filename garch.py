@@ -2,8 +2,9 @@
 import pandas as pd
 
 from sqlalchemy import create_engine
-engine = create_engine('mysql+pymysql://localhost', connect_args={'read_default_file': '~/.mytest.cnf'})
 
+engine = create_engine('mysql+pymysql://localhost', connect_args={'read_default_file': '~/.myuseq.cnf'})
+conn = engine.connect()
 with engine.connect() as conn:
     SQL_query = pd.read_sql_query(
         '''select tradedate, pct_close from USEQ_HIST where symbol='MS'

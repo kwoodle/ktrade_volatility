@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from IPython import get_ipython
 
 # ## More from arch
 
@@ -8,7 +9,7 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic('matplotlib', 'auto')
 import matplotlib.pyplot as plt
 import seaborn
 
